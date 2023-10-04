@@ -24,7 +24,7 @@ public class Productora1 extends AppCompatActivity {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
 
-        TabLayout tl = (TabLayout) findViewById(R.id.tablayout);
+        TabLayout tl = (TabLayout) findViewById(R.id.tablayout);{
         tl.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -50,14 +50,15 @@ public class Productora1 extends AppCompatActivity {
         return true;
     }
 
+
+}
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId(); //recupera el id de la opcion seleccionada
-        if (id == R.id.opcion) {
-            Toast.makeText(this, "Solicitudes", Toast.LENGTH_SHORT).show();
-        }
+        int id = item.getItemId();
 
-
+        if (id == R.id.opcion)
+            Solicitudes s = new Solicitudes();
+            getSupportFragmentManager().beginTransaction().replace(R.id.)
         return super.onOptionsItemSelected(item);
     }
-}
