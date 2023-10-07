@@ -1,8 +1,10 @@
-package com.example.myapp;
+package com.example.myapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.myapp.R;
 
 public class Solicitudes extends AppCompatActivity {
 

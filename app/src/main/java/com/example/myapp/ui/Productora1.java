@@ -1,20 +1,40 @@
-package com.example.myapp;
+package com.example.myapp.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+import com.example.myapp.R;
 import com.google.android.material.tabs.TabLayout;
 //import android.widget.Toolbar;
 
 public class Productora1 extends AppCompatActivity {
 
     private Toolbar supportActionBar;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Incorporar el menu dentro de la activity
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId(); // Recuperar el id de la opción seleccionada
+        if (id == R.id.opcion) {
+            // Crear un Intent para iniciar la actividad Solicitudes
+            Intent intent = new Intent(this, Solicitudes.class);
+            startActivity(intent); // Iniciar la actividad Solicitudes
+            return true; // Devuelve true para indicar que el evento ha sido manejado
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +44,19 @@ public class Productora1 extends AppCompatActivity {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
 
-        TabLayout tl = (TabLayout) findViewById(R.id.tablayout);{
+        TabLayout tl = (TabLayout) findViewById(R.id.tablayout);
         tl.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 //codificar cosas a ejecutar cuando le das tap a un tab
+                int position = tab.getPosition();
+                switch (position){
+                    case 1:
+                        //llamar al fragmento Home
+                        Home h = new Home();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,h).commit();
+                        break;
+                }
             }
 
             @Override
@@ -42,23 +70,4 @@ public class Productora1 extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        //incorporar el menu dentro de la activity
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-
 }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.opcion)
-            Solicitudes s = new Solicitudes();
-            getSupportFragmentManager().beginTransaction().replace(R.id.)
-        return super.onOptionsItemSelected(item);
-    }
