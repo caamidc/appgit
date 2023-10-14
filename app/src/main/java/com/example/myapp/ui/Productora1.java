@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.myapp.R;
 import com.google.android.material.tabs.TabLayout;
@@ -51,7 +53,7 @@ public class Productora1 extends AppCompatActivity {
                 //codificar cosas a ejecutar cuando le das tap a un tab
                 int position = tab.getPosition();
                 switch (position){
-                    case 1:
+                    case 0:
                         //llamar al fragmento Home
                         Home h = new Home();
                         getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,h).commit();
@@ -69,5 +71,7 @@ public class Productora1 extends AppCompatActivity {
                 //codificar cosas a ejecutar cuando un tab se vuelve a seleccionar
             }
         });
+
     }
 }
+

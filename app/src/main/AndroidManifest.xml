@@ -13,6 +13,15 @@
         android:theme="@style/Theme.MyApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.KarmaPerfil"
+            android:exported="false" />
+        <activity
+            android:name=".ui.InvasionPerfil"
+            android:exported="false" />
+        <activity
+            android:name=".ui.EloquentPerfil"
+            android:exported="false" />
+        <activity
             android:name=".ui.Solicitudes"
             android:exported="false" />
         <activity
