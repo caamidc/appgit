@@ -72,36 +72,6 @@ public class Productora1 extends AppCompatActivity {
             }
         });
 
-        // Encontrar los botones por ID
-        Button perfil1Button = findViewById(R.id.perfil1);
-        Button perfil2Button = findViewById(R.id.perfil2);
-        Button perfil3Button = findViewById(R.id.perfil3);
-
-        // Agregar onClickListener a los botones
-        perfil1Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Productora1.this, EloquentPerfil.class);
-                startActivity(intent);
-            }
-        });
-
-        perfil2Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Productora1.this, InvasionPerfil.class);
-                startActivity(intent);
-            }
-        });
-
-        perfil3Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Productora1.this, KarmaPerfil.class);
-                startActivity(intent);
-            }
-        });
-
     }
 }
 

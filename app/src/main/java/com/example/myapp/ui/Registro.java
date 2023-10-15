@@ -1,7 +1,6 @@
 package com.example.myapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,39 +8,64 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myapp.R;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Registro extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
+
+    private EditText nombre2;
+    private EditText correo;
+    private EditText contrasenia2;
+    private EditText contrasenia3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        nombre2 = findViewById(R.id.nombre2);
+        correo = findViewById(R.id.correo);
+        contrasenia2 = findViewById(R.id.contrasenia2);
+        contrasenia3 = findViewById(R.id.contrasenia3);
     }
 
-    public void registro2(View v){
-        EditText campo1 = this.findViewById(R.id.nombre2);
-        String nombre2 = campo1.getText().toString();
-        EditText campo2 = this.findViewById(R.id.correo);
-        String correo = campo2.getText().toString();
-        EditText campo3 = this.findViewById(R.id.contrasenia2);
-        String contrasenia2 = campo3.getText().toString();
-        EditText campo4 = this.findViewById(R.id.contrasenia3);
-        String contrasenia3 = campo4.getText().toString();
+    public void onStart() {
+        super.onStart();
+    }
 
-        if (isValidRegistration(nombre2, correo, contrasenia2, contrasenia3)){
-            Toast.makeText(this, "se ha registrado con exito", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
-            finish();
-        } else{
-            Toast.makeText(this,"error en el registro", Toast.LENGTH_SHORT).show();
+    public void registrarUsuario(View view) {
+        final String email = correo.getText().toString();
+        final String password = contrasenia2.getText().toString();
+        final String nombreUsuario = nombre2.getText().toString();
+
+        if (password.equals(contrasenia3.getText().toString())) {
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            guardarRegistroEnRealtimeDatabase(user.getUid(), nombreUsuario, email); // Guardar nombre y correo
+                            Toast.makeText(getApplicationContext(), "Usuario Creado", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(i);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Authentication failed", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        } else {
+            Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private boolean isValidRegistration(String nombre2, String correo, String contrasenia2, String contrasenia3){
-        if(nombre2.equals("camila") && correo.equals("camila@gmail.com") && contrasenia2.equals("123") && contrasenia3.equals("123")){
-            return true;
-        }
-        return false;
-    }
-}
+    private void guardarRegistroEnRealtimeDatabase(String userId, String nombreUsuario, String correo) {
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference userRef = databaseRef.child("registro").child(userId);
+        userRef.child("nombre").setValue(nombreUsuario); // Guardar el nombre
+        userRef.child("correo").setValue(correo); // Guardar el correo
+    }}
