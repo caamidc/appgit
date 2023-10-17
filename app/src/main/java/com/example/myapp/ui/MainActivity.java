@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.myapp.R;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -16,6 +14,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
             // Obtén el nombre del usuario solo si ya ha iniciado sesión
             obtenerNombreUsuario(currentUser.getUid());
         }
+
+        // Llama a la función para asegurar la carpeta de fotos de perfil
+        asegurarCarpetaFotosPerfil();
     }
 
     public void ingresar(View v) {
@@ -101,5 +104,30 @@ public class MainActivity extends AppCompatActivity {
         // Por ejemplo, puedes redirigirlo a la actividad Productora1.
         Intent i = new Intent(this, Productora1.class);
         startActivity(i);
+    }
+
+    private void asegurarCarpetaFotosPerfil() {
+        String uid = mAuth.getCurrentUser().getUid();
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference fotosPerfilRef = storageReference.child("FotosPerfil/" + uid + "/perfil.jpg");
+
+        // Verificar si la carpeta de FotosPerfil ya existe
+        fotosPerfilRef.getParent().listAll()
+                .addOnSuccessListener(listResult -> {
+                    // La carpeta FotosPerfil ya existe
+                    // No necesitas hacer nada adicional aquí
+                })
+                .addOnFailureListener(e -> {
+                    // La carpeta FotosPerfil no existe, así que debes crearla
+                    StorageReference fotosPerfilFolderRef = storageReference.child("FotosPerfil/" + uid + "/");
+                    fotosPerfilFolderRef.putBytes(new byte[0]) // Carga un archivo vacío para crear la carpeta
+                            .addOnSuccessListener(taskSnapshot -> {
+                                // La carpeta FotosPerfil se creó exitosamente
+                                // Puedes cargar la foto de perfil aquí
+                            })
+                            .addOnFailureListener(exception -> {
+                                // Manejar errores en caso de que la creación de la carpeta falle
+                            });
+                });
     }
 }
