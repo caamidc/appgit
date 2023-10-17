@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Permite la conexión a Firebase -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Permite comprobar la conectividad de la red -->
+
+    <!-- Permite a la aplicación acceder al sistema de archivos para leer imágenes desde la galería -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Permite a la aplicación acceder a la cámara del dispositivo para tomar fotos -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Permite a la aplicación acceder a la red para subir y descargar archivos desde Firebase Storage -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Permite a la aplicación acceder a Firebase Realtime Database (si se utiliza) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Permite a la aplicación acceder a Firebase Firestore (si se utiliza) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Permite a la aplicación acceder a Firebase Authentication (si se utiliza) -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
 
     <application

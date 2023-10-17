@@ -58,7 +58,7 @@ public class Productora1 extends AppCompatActivity {
                         break;
                     case 1:
                         //lamar al fragmento cualquiera
-                        Cualquiera c = new Cualquiera();
+                        PerfilUsuario c = new PerfilUsuario();
                         getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,c).commit();
                         break;
                 }
