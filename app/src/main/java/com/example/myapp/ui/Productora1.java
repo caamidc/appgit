@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.example.myapp.R;
 import com.google.android.material.tabs.TabLayout;
@@ -57,6 +55,11 @@ public class Productora1 extends AppCompatActivity {
                         //llamar al fragmento Home
                         Home h = new Home();
                         getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,h).commit();
+                        break;
+                    case 1:
+                        //lamar al fragmento cualquiera
+                        Cualquiera c = new Cualquiera();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,c).commit();
                         break;
                 }
             }

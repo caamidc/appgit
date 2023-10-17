@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
-    private String nombreUsuario; // Campo local para almacenar el nombre del usuario
+    private String nombreUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        // Obtén el nombre del usuario al iniciar la actividad
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
+            // Obtén el nombre del usuario solo si ya ha iniciado sesión
             obtenerNombreUsuario(currentUser.getUid());
         }
     }
@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     nombreUsuario = dataSnapshot.getValue(String.class);
+
+                    // Una vez que se ha obtenido el nombre del usuario, procede al inicio de sesión
+                    iniciarSesion();
                 }
             }
 
@@ -92,6 +95,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void iniciarSesion() {
+        // Aquí puedes redirigir al usuario o realizar otras acciones después de cargar los datos necesarios.
+        // Por ejemplo, puedes redirigirlo a la actividad Productora1.
+        Intent i = new Intent(this, Productora1.class);
+        startActivity(i);
+    }
 }
-
-
