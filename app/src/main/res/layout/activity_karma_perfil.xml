@@ -53,9 +53,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/telefonoTextView"
+        android:layout_marginTop="80dp"
+        android:padding="16dp"
         android:text="Productora especializada en producciones cinematográficas y televisivas. Comprometidos con la calidad y la creatividad."
-        android:textSize="16sp"
-        android:layout_marginTop="32dp"
-        android:padding="16dp" />
+        android:textSize="16sp" />
 
 </RelativeLayout>
