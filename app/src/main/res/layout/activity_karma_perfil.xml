@@ -53,9 +53,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/telefonoTextView"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="24dp"
+        android:gravity="start"
         android:padding="16dp"
-        android:text="Productora especializada en producciones cinematográficas y televisivas. Comprometidos con la calidad y la creatividad."
+        android:text="KarmaProducciones es una productora de eventos que se especializa en la organización de celebraciones de todo tipo. Desde fiestas de cumpleaños inolvidables hasta eventos corporativos impactantes, estamos dedicados a convertir cada ocasión en una experiencia memorable. Nuestro enfoque en la creatividad y la innovación nos distingue y nos permite ofrecer momentos únicos y emocionantes para nuestros clientes."
         android:textSize="16sp" />
 
 </RelativeLayout>
