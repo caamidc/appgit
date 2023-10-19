@@ -29,13 +29,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Correo: eloquent@email.com" />
+                android:text="Correo: info@eloquentmedia.com" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Teléfono: +1234567890"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:text="Número de Teléfono: +1-987-654-3210" />
 
             <Button
                 android:id="@+id/buttonEloquentPerfil"
@@ -62,13 +62,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Correo: invasion.contact@email.com" />
+                android:text="Correo: contacto@invasionproducciones.com" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Teléfono: +9876543210"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:text="Número de Teléfono: +1-555-123-4567" />
 
             <Button
                 android:id="@+id/buttonInvasionPerfil"
@@ -95,13 +95,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Correo: info@karmaproducciones.com" />
+                android:text="Correo: contacto@karmaproducciones.com" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Teléfono: +5555555555"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:text="Número de Teléfono: +1-123-456-7890" />
 
             <Button
                 android:id="@+id/buttonKarmaPerfil"

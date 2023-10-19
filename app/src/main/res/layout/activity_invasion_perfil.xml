@@ -54,4 +54,16 @@
         android:text="Invasión es una productora especializada en la creación de contenido audiovisual. Nuestra pasión es la originalidad y la narrativa impactante. Estamos comprometidos en contar historias únicas a través del cine, la televisión y otros medios. Cada proyecto es una oportunidad para desafiar límites y crear experiencias visuales inolvidables."
         android:textSize="16sp" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/botonIrAFormulario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@drawable/baseline_add_circle_outline_24" />
+
 </RelativeLayout>

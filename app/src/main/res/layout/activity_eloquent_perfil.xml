@@ -54,4 +54,18 @@
         android:text="Eloquent es una empresa líder en la producción de contenido multimedia y estrategias de marketing digital. Nuestra misión es llevar la innovación y la eficacia a cada proyecto que emprendemos. Trabajamos con un equipo de profesionales apasionados por contar historias de manera efectiva y creativa, proporcionando soluciones a medida para marcas y empresas que buscan destacar en el mundo digital."
         android:textSize="16sp" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/botonIrAFormulario"
+        android:layout_width="77dp"
+        android:layout_height="71dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="24dp"
+        app:srcCompat="@drawable/baseline_add_circle_outline_24" />
+
 </RelativeLayout>
